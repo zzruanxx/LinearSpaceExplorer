@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Space Explorer - Visualizador de Transformações Lineares</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔷 Linear Space Explorer</h1>
+            <p>Visualize transformações lineares e suas interpretações geométricas em 3D</p>
+            <p style="font-size: 0.9em; opacity: 0.8;">Arraste para rotacionar • Role para zoom</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Painel de Controle -->
+            <div class="control-panel">
+                <h2>Matriz de Transformação 3×3</h2>
+                <div class="matrix-input">
+                    <div class="matrix-row">
+                        <input type="number" id="m00" value="1" step="0.1">
+                        <input type="number" id="m01" value="0" step="0.1">
+                        <input type="number" id="m02" value="0" step="0.1">
+                    </div>
+                    <div class="matrix-row">
+                        <input type="number" id="m10" value="0" step="0.1">
+                        <input type="number" id="m11" value="1" step="0.1">
+                        <input type="number" id="m12" value="0" step="0.1">
+                    </div>
+                    <div class="matrix-row">
+                        <input type="number" id="m20" value="0" step="0.1">
+                        <input type="number" id="m21" value="0" step="0.1">
+                        <input type="number" id="m22" value="1" step="0.1">
+                    </div>
+                </div>
+
+                <button id="transformBtn" class="transform-btn">🔄 Transformar</button>
+                <button id="resetBtn" class="reset-btn">↺ Resetar</button>
+
+                <div class="presets">
+                    <h3>Transformações Pré-definidas:</h3>
+                    <button class="preset-btn" data-preset="scale">Escala 2x</button>
+                    <button class="preset-btn" data-preset="rotation">Rotação Z 45°</button>
+                    <button class="preset-btn" data-preset="shear">Cisalhamento</button>
+                    <button class="preset-btn" data-preset="reflection">Reflexão XY</button>
+                </div>
+
+                <!-- Área de Interpretação -->
+                <div id="info" class="info-panel">
+                    <h3>📊 Interpretação Geométrica</h3>
+                    <p>Insira uma matriz e clique em "Transformar" para ver a análise.</p>
+                </div>
+            </div>
+
+            <!-- Área de Visualização 3D -->
+            <div class="visualization-panel">
+                <div id="canvas-container"></div>
+                <div class="legend">
+                    <h3>Legenda</h3>
+                    <div class="legend-item">
+                        <span class="color-box" style="background: #ff0000;"></span>
+                        <span>Vetor i (eixo X)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="color-box" style="background: #00ff00;"></span>
+                        <span>Vetor j (eixo Y)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="color-box" style="background: #0000ff;"></span>
+                        <span>Vetor k (eixo Z)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script principal com visualização 2D usando Canvas -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
