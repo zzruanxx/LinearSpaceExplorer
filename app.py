@@ -55,8 +55,13 @@ def calcular():
         # Calcular autovalores e autovetores (opcional, para análise avançada)
         try:
             autovalores, autovetores = np.linalg.eig(matriz)
-            autovalores_list = autovalores.tolist()
-            autovetores_list = autovetores.tolist()
+            # Converter para real se forem complexos (tomar apenas a parte real)
+            if np.iscomplexobj(autovalores):
+                autovalores_list = np.real(autovalores).tolist()
+                autovetores_list = np.real(autovetores).tolist()
+            else:
+                autovalores_list = autovalores.tolist()
+                autovetores_list = autovetores.tolist()
         except:
             autovalores_list = []
             autovetores_list = []
