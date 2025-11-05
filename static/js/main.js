@@ -165,6 +165,7 @@ function drawVector(vec) {
 function setupControls() {
     let isDragging = false;
     let lastX = 0, lastY = 0;
+    let wheelTimeout = null;
     
     canvas.addEventListener('mousedown', (e) => {
         isDragging = true;
@@ -192,10 +193,18 @@ function setupControls() {
         isDragging = false;
     });
     
+    // Debounced wheel event handler for better performance
     canvas.addEventListener('wheel', (e) => {
         e.preventDefault();
-        scale *= (e.deltaY > 0) ? 0.95 : 1.05;
-        scale = Math.max(20, Math.min(150, scale));
+        
+        if (wheelTimeout) {
+            clearTimeout(wheelTimeout);
+        }
+        
+        wheelTimeout = setTimeout(() => {
+            scale *= (e.deltaY > 0) ? 0.95 : 1.05;
+            scale = Math.max(20, Math.min(150, scale));
+        }, 10);
     });
 }
 

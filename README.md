@@ -8,7 +8,7 @@ O Linear Space Explorer é uma aplicação web educacional que permite visualiza
 
 ### Funcionalidades
 
-- 🎯 Visualização 3D interativa usando Three.js
+- 🎯 Visualização 3D interativa usando Canvas 2D com projeção 3D
 - 🔢 Cálculo de determinante e interpretação geométrica
 - 🎨 Animações suaves das transformações
 - 📊 Transformações pré-definidas (escala, rotação, cisalhamento, reflexão)
@@ -24,8 +24,8 @@ O Linear Space Explorer é uma aplicação web educacional que permite visualiza
 - Interpretações geométricas automáticas
 
 ### Frontend (HTML/CSS/JavaScript)
-- Interface com Three.js para renderização 3D
-- Animações com GSAP
+- Interface com Canvas 2D para renderização 3D (projeção isométrica)
+- Animações suaves com funções de easing customizadas
 - Comunicação assíncrona com o backend via fetch API
 - Visualização de vetores da base canônica transformados
 
@@ -87,8 +87,8 @@ http://localhost:5000
 
 - **Backend**: Python 3, Flask, NumPy
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Visualização**: Three.js
-- **Animação**: GSAP
+- **Visualização**: Canvas 2D API com projeção 3D customizada
+- **Animação**: Funções de easing e interpolação customizadas
 - **Estilo**: CSS Grid, Flexbox, Gradientes
 
 ## 📝 Estrutura do Projeto
