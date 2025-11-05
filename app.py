@@ -69,7 +69,13 @@ def calcular():
         })
     
     except Exception as e:
-        return jsonify({"erro": str(e)}), 400
+        # Log error but don't expose details to user
+        app.logger.error(f"Error processing matrix: {str(e)}")
+        return jsonify({"erro": "Erro ao processar a matriz. Verifique os valores fornecidos."}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Debug mode should be disabled in production
+    # For development, set debug=True only when needed
+    import os
+    debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(debug=debug_mode, host='0.0.0.0', port=5000)

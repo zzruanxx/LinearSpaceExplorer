@@ -54,6 +54,14 @@ pip install -r requirements.txt
 python app.py
 ```
 
+Para desenvolvimento com modo debug (não use em produção):
+```bash
+export FLASK_DEBUG=true  # Linux/Mac
+# ou
+set FLASK_DEBUG=true     # Windows
+python app.py
+```
+
 4. Abra seu navegador e acesse:
 ```
 http://localhost:5000
